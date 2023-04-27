@@ -26,7 +26,7 @@ export class CatService {
   }
 
   async update(id: string, updateCatDto: UpdateCatDto) {
-    const updatedCat = await this.CatModule.findOneAndUpdate({_id: id}, updateCatDto, {new: true});
+    const updatedCat = await this.CatModule.findByIdAndUpdate(id, updateCatDto, {new: true});
     return updatedCat;
   }
 
