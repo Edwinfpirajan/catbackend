@@ -6,6 +6,8 @@ async function bootstrap() {
   const port = 8080
   const app = await NestFactory.create(AppModule);
 
+  app.enableCors();
+
   const config = new DocumentBuilder()
     .setTitle('ApiCat Smart Academy ')
     .setDescription('Es una prueba para desarrollador en la academia de Smart por Edwin Fernando Pirajan Arevalo')
@@ -17,6 +19,5 @@ async function bootstrap() {
 
   await app.listen(process.env.PORT || port);
   console.log(`Server is running on port http://localhost:${port}/`)
-
 }
 bootstrap();

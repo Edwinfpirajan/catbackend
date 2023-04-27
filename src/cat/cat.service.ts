@@ -25,11 +25,13 @@ export class CatService {
    
   }
 
-  update(id: number, updateCatDto: UpdateCatDto) {
-    
+  async update(id: string, updateCatDto: UpdateCatDto) {
+    const updatedCat = await this.CatModule.findOneAndUpdate({_id: id}, updateCatDto, {new: true});
+    return updatedCat;
   }
 
-  remove(id: number) {
-   
+  async remove(id: string) {
+    const deletedCat = await this.CatModule.findByIdAndDelete(id);
+    return deletedCat;
   }
 }
